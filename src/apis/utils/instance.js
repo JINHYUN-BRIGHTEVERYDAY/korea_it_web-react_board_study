@@ -12,7 +12,7 @@
  * 예를 들어, 모든 요청에 토큰을 자동으로 추가하거나, 특정 에러코드가 오면 자동으로 로그인 페이지로 보내는 등의 처리를 할 수 있다.
  */
 
-import axios from "axios"
+import axios from "axios";
 
 export const fetchPost = async (postId) => {
   try {
@@ -25,7 +25,10 @@ export const fetchPost = async (postId) => {
   }
 };
 
-export const jsonInstance = axios.create({baseURL: "https://jsonplaceholder.typicode.com", })
+export const jsonInstance = axios.create({
+  baseURL: "https://jsonplaceholder.typicode.com", 
+
+});
 
 export const instance = axios.create({
   baseURL: "http://localhost:8080",
