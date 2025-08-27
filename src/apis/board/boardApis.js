@@ -18,3 +18,14 @@ export const addBoardRequest = async (data) => {
     return error.response;
   }
 };
+
+
+export const getBoardList = async() => {
+  try {
+    const response = await instance.get("/board/list")
+    return response;
+  } catch (error) {
+    return error.response;
+    
+  }
+}
