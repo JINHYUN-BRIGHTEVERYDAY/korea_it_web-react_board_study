@@ -1,6 +1,5 @@
 import { css } from "@emotion/react";
 
-
 export const container = css`
   display: flex;
   flex-direction: column;
@@ -21,7 +20,6 @@ export const container = css`
     outline: none;
     font-size: 20px;
     color: #333;
-
   }
 
   & > textarea {
@@ -37,7 +35,6 @@ export const container = css`
     color: #333;
     resize: none;
   }
-
 `;
 
 export const btnBox = css`
@@ -46,21 +43,19 @@ export const btnBox = css`
   align-items: center;
   width: 100%;
 
-
   & > button {
     background-color: #0d6efd;
     padding: 12px 25px;
-		border: none;
-		border-radius: 8px;
-		font-size: 15px;
-		font-weight: 600;
-		cursor: pointer;
-		color: white;
-		transition: all 0.2s ease;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    transition: all 0.2s ease;
   }
 
   & > button:hover {
-		opacity: 0.9;
-	}
-
+    opacity: 0.9;
+  }
 `;

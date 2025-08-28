@@ -1,14 +1,16 @@
 /** @jsxImportSource @emotion/react */
 import { useEffect, useState } from "react";
 import * as s from "./styles";
-import { getBoardList } from "../../apis/board/boardapis";
+import { getBoardList } from "../../apis/board/boardApis";
 import ReactPaginate from "react-paginate";
+import { useNavigate } from "react-router-dom";
 
 function Board() {
   const [boardList, setBoardList] = useState([]);
 	const [message, setMessage] = useState("");
 	const [currentBoardList, setCurrentBoardList] = useState([]);
 	const [currentPage, setCurrentPage] = useState(0);
+	const navigate = useNavigate();
 
 	const amountBoard = 15;
 
@@ -24,7 +26,7 @@ function Board() {
   }, []);
 
 	useEffect(() => {
-		const offset = currentPage * amountBoard
+		const offset = currentPage * amountBoard;
 		const slicedBoard = boardList.slice(offset, offset + amountBoard);
 		setCurrentBoardList(slicedBoard);
 	}, [currentPage, boardList]);
@@ -44,7 +46,12 @@ function Board() {
 						const boardNumber = 
 								currentPage * amountBoard + index + 1;
 						return (
-							<li key={board.boardId}>
+							<li 
+								key={board.boardId} 
+								onClick={() => {
+								navigate(`/board/${board.boardId}`);
+								}}
+							>
               <div>
                 <span>{boardNumber}</span>
                 <strong>{board.title}</strong>
@@ -62,6 +69,7 @@ function Board() {
 				onPageChange={pageOnChangeHandler}
 				previousLabel="이전"
 				nextLabel="다음"
+				// hrefBuilder={(currentPage) => `/board?page=${currentPage}`}
 			/>
 			</div>
     </div>
