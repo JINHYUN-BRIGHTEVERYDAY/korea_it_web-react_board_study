@@ -47,4 +47,12 @@ export const removeBoard = async(boardId) => {
   }
 }
 
+export const updateBoard = async(data) => {
+    try {
+    const response = await instance.get("/board/update", data);
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+}
 
