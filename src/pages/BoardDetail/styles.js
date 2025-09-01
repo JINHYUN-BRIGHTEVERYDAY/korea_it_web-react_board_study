@@ -1,12 +1,9 @@
 import { css } from "styled-components";
 
 export const container = css`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 100%;
-  padding: 40px 200px;
-  box-sizing: border-box;
+  height: 100%;
+  overflow: auto;
 `;
 
 export const boardContainer = css`
@@ -51,7 +48,6 @@ export const btnContainer = css`
   & > div {
     display: flex;
     gap: 8px;
-
   }
 `;
 

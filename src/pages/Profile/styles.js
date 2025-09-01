@@ -24,11 +24,47 @@ export const profileContainer = css`
   /* background-color: chocolate; */
 `;
 
-export const profileMain = css`
+export const profileBox = css`
   width: 100%;
   height: 500px;
-  background-color: cyan;
+  /* background-color: cyan; */
+  border: 1px solid #dbdbdb;
+  box-sizing: border-box;
 `;
+
+export const profileTab = (tabChild = css`
+  width: 100%;
+  height: 40px;
+  background-color: beige;
+  box-sizing: border-box;
+
+  & > ul {
+    display: flex;
+
+    & > li {
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* background-color: burlywood; */
+      font-size: 14px;
+      padding: 0 14px;
+      box-sizing: border-box;
+      border-right: 1px solid #dbdbdb;
+      color: #333;
+      cursor: pointer;
+
+      &:nth-child(${tabChild}) {
+        border-bottom: 1px solid white;
+      }
+
+      &:hover {
+        background-color: #f2f2f2;
+        font-weight: 600;
+      }
+    }
+  }
+`);
 
 export const profileImgBox = css`
   width: 250px;
@@ -85,4 +121,9 @@ export const profileInfoBox = css`
       cursor: pointer;
     }
   }
+`;
+
+export const profileMain = css`
+  width: 100%;
+  height: 460px;
 `;
