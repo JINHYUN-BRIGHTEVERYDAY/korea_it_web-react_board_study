@@ -10,8 +10,7 @@ function Write() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const { isLoggedIn, principal } = usePrincipalState();
-  // const queryClient = useQueryClient();
-  // const principalData = queryClient.getQueryData(["getPrincipal"]);
+
   const navigate = useNavigate();
 
   const addBoardMutation = useMutation({
@@ -38,7 +37,7 @@ function Write() {
       return;
     }
 
-    if (principal === null) {
+    if (!isLoggedIn) {
       alert("로그인이 필요합니다.");
       navigate("/auth/signin");
       return;

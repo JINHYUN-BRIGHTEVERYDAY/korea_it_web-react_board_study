@@ -3,8 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { getPrincipalRequest } from "../../apis/auth/authApis";
 import Header from "../Header/Header";
 import * as s from "./styles";
-import { usePrincipalState } from "../../store/usePrincipalStore";
 import { useEffect } from "react";
+import { usePrincipalState } from "../../store/usePrincipalStore";
 
 function Layout({ children }) {
   const accessToken = localStorage.getItem("accessToken");
@@ -21,13 +21,6 @@ function Layout({ children }) {
       login(data?.data.data);
     }
   }, [data, login]);
-
-  // useEffect(() => {
-  //   console.log(isLoggedIn);
-  // }, [isLoggedIn, principal]);
-  // onSuccess: (response) => {
-  //   console.log(response);
-  // },
 
   return (
     <div css={s.layout}>

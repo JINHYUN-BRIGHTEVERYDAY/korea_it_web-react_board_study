@@ -7,7 +7,6 @@ export const container = css`
   width: 100%;
   padding: 40px 200px;
   box-sizing: border-box;
-  /* background-color: beige; */
   gap: 15px;
 
   & > input {

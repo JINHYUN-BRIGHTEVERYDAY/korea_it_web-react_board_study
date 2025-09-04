@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { useEffect, useState } from "react";
 import * as s from "./styles";
-import { getBoardDetail } from "../../apis/board/boardApis";
+import { getBoardDetail, updateBoard } from "../../apis/board/boardApis";
 import { useNavigate, useParams } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { usePrincipalState } from "../../store/usePrincipalStore";
@@ -16,7 +16,7 @@ function Update() {
 
   const updateBoardMutation = useMutation({
     mutationKey: "updateBoard",
-    mutationFn: updateBoardRequest,
+    mutationFn: updateBoard,
     onSuccess: (response) => {
       if (response.data.status === "success") {
         alert(response.data.message);

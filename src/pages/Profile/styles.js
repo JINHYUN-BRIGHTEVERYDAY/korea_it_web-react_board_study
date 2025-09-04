@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import { css } from "@emotion/react";
 
 export const container = css`
   display: flex;
@@ -7,93 +7,47 @@ export const container = css`
   width: 100%;
   padding: 40px 200px;
   box-sizing: border-box;
-  /* background-color: beige; */
-`;
-
-export const profileHeader = css`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  min-height: 700px;
-  /* background-color: skyblue; */
 `;
 
 export const profileContainer = css`
   width: 100%;
-  height: 250px;
-  /* background-color: chocolate; */
+  min-height: 700px;
+  display: flex;
+  flex-direction: column;
 `;
 
-export const profileBox = css`
+export const profileHeader = css`
   width: 100%;
-  height: 500px;
-  /* background-color: cyan; */
-  border: 1px solid #dbdbdb;
-  box-sizing: border-box;
+  height: 200px;
+  display: flex;
 `;
-
-export const profileTab = (tabChild = css`
-  width: 100%;
-  height: 40px;
-  background-color: beige;
-  box-sizing: border-box;
-
-  & > ul {
-    display: flex;
-
-    & > li {
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      /* background-color: burlywood; */
-      font-size: 14px;
-      padding: 0 14px;
-      box-sizing: border-box;
-      border-right: 1px solid #dbdbdb;
-      color: #333;
-      cursor: pointer;
-
-      &:nth-child(${tabChild}) {
-        border-bottom: 1px solid white;
-      }
-
-      &:hover {
-        background-color: #f2f2f2;
-        font-weight: 600;
-      }
-    }
-  }
-`);
 
 export const profileImgBox = css`
   width: 250px;
   height: 100%;
-  background-color: chartreuse;
   display: flex;
   justify-content: center;
   align-items: center;
 
   & > div {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     border: 1px solid #dbdbdb;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
 
-  & > img {
-    width: 100%;
+    & > img {
+      width: 100%;
+    }
   }
 `;
 
 export const profileInfoBox = css`
   width: calc(100% - 250px);
   height: 100%;
-  /* background-color: burlywood; */
   padding: 30px 40px;
   box-sizing: border-box;
   color: #333;
@@ -118,7 +72,48 @@ export const profileInfoBox = css`
       font-weight: 600;
       border-radius: 4px;
       background-color: #0d6efd;
+      color: white;
       cursor: pointer;
+    }
+  }
+`;
+
+export const profileBox = css`
+  width: 100%;
+  height: 500px;
+  border: 1px solid #dbdbdb;
+  box-sizing: border-box;
+`;
+
+export const profileTab = (tabChild) => css`
+  width: 100%;
+  height: 40px;
+  border-bottom: 1px solid #dbdbdb;
+  box-sizing: border-box;
+
+  & > ul {
+    display: flex;
+
+    & > li {
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      padding: 0 14px;
+      border-right: 1px solid #dbdbdb;
+      box-sizing: border-box;
+      color: #333;
+      cursor: pointer;
+
+      &:nth-child(${tabChild}) {
+        border-bottom: 1px solid white;
+      }
+
+      &:hover {
+        background-color: #f2f2f2;
+        font-weight: 600;
+      }
     }
   }
 `;

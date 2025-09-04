@@ -1,9 +1,12 @@
-import { css } from "styled-components";
+import { css } from "@emotion/react";
 
 export const container = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  height: 100%;
-  overflow: auto;
+  padding: 40px 200px;
+  box-sizing: border-box;
 `;
 
 export const boardContainer = css`
@@ -33,8 +36,8 @@ export const boardContent = css`
   width: 100%;
   min-height: 600px;
   padding: 10px;
-  border-top: 2px solid #dbdbdb;
-  border-bottom: 2px solid #dbdbdb;
+  border-top: 2px solid #333;
+  border-bottom: 2px solid #333;
   box-sizing: border-box;
 `;
 
