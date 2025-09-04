@@ -1,12 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { useEffect, useRef, useState } from "react";
 import * as s from "./styles";
-import { ref, uploadBytesResumable } from "@firebase/storage";
+import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
 import { v4 as uuid } from "uuid";
 import { storage } from "../../apis/config/firebaseConfig";
+import { changeProfileImg } from "../../apis/account/accountApis";
 
-function ChangeProfileImg({ oldProfileImg }) {
-  const [profileImg, setProfileImg] = useState("");
+function ChangeProfileImg({ oldProfileImg, userId }) {
+  const [profileImg, setProfileImg] = useState(null);
   const [newProfileImg, setNewProfileImg] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -58,10 +59,38 @@ function ChangeProfileImg({ oldProfileImg }) {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
         setProgress(progressPercent);
+      },
+      // 에러 핸들러
+      (error) => {
+        console.log(error);
+        alert("업로드 중에 에러가 발생하였습니다.");
+        setIsUploading(false);
+      },
+      // 완료 핸들러
+      async () => {
+        try {
+          const downloadUrl = await getDownloadURL(uploadTask.snapshot.ref);
+
+          changeProfileImg({
+            userId: userId,
+            profileImg: downloadUrl,
+          }).then((response) => {
+            if (response.data.message === "success") {
+              alert(response.data.message);
+              window.location.reload();
+            } else if (response.data.status === "failed") {
+              alert(response.data.message);
+            }
+          });
+        } catch (error) {
+          console.log(error);
+          alert("이미지 URL을 가져오는 도중에 에러가 발생하였습니다.");
+        } finally {
+          setIsUploading(false);
+          setProgress(0);
+        }
       }
     );
-
-    //=== 에러 핸들러, 완료 핸들러 남은
   };
 
   useEffect(() => {
@@ -70,7 +99,11 @@ function ChangeProfileImg({ oldProfileImg }) {
   return (
     <div css={s.container}>
       <div css={s.profileImgBox}>
-        <img src={profileImg} alt="" onClick={onClickProfileImgHandler} />
+        <img
+          src={profileImg}
+          alt="profileImage"
+          onClick={onClickProfileImgHandler}
+        />
         <input
           type="file"
           accept="image/*"
@@ -78,7 +111,9 @@ function ChangeProfileImg({ oldProfileImg }) {
           onChange={onChangeFileHandler}
         />
         <div css={s.buttonBox}>
-          <button onClick={onClickChangeBtnHandler}>변경하기</button>
+          <button onClick={onClickChangeBtnHandler}>
+            {isUploading ? `${progress}%` : "변경하기"}
+          </button>
         </div>
       </div>
     </div>

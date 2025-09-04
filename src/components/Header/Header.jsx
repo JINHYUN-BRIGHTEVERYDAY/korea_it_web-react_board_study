@@ -18,9 +18,9 @@ function Header() {
     logout();
   };
 
-  useEffect(() => {
-    console.log(isLoggedIn, principal);
-  }, [isLoggedIn, principal]);
+  // useEffect(() => {
+  //   console.log(isLoggedIn, principal);
+  // }, [isLoggedIn, principal]);
 
   return (
     <div css={s.header}>
